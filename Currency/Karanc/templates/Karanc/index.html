@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,120 +5,142 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currency Converter</title>
     <style>
-/* Reset some default styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* Apply styles to the body and background image */
-body {
-    font-family: Arial, sans-serif;
-    background-image: url('https://img.freepik.com/premium-vector/global-currency-background_115579-405.jpg'); /* Replace with your image path */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        /* Apply styles to the body and background image */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/premium-vector/global-currency-background_115579-405.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-/* Create a container for the form */
-.container {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-}
+        /* Create a container for the form */
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        }
 
-/* Style the header */
-h1 {
-    color: #007bff;
-    font-size: 28px;
-    margin-bottom: 20px;
-}
+        /* Style the header */
+        h1 {
+            color: #007bff;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
 
-/* Style labels and input fields */
-label {
-    display: block;
-    margin-bottom: 10px;
-    color: #333;
-    font-weight: bold;
-    font-size: 18px;
-}
+        /* Style labels and input fields */
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: bold;
+            font-size: 18px;
+        }
 
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
+        select, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
 
-/* Style the convert button */
-.submit {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        /* Style the convert button */
+        .submit {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-button:hover {
-    background-color: #0056b3;
-}
+        button:hover {
+            background-color: #0056b3;
+        }
 
-/* Style the result input (read-only) */
-#foreignCurrency {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-}
+        /* Style the result input (read-only) */
+        #foreignCurrency {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
 
-/* Responsiveness for smaller screens */
-@media screen and (max-width: 600px) {
-    .container {
-        width: 90%;
-        max-width: 400px;
-    }
-}
+        /* Responsiveness for smaller screens */
+        @media screen and (max-width: 600px) {
+            .container {
+                width: 90%;
+                max-width: 400px;
+            }
+        }
     </style>
-
 </head>
 <body>
-    <div class="container">
+    <form onsubmit="getCurrencyValues(event)" action="{% url 'limit' %}">
+        <div class="container">
         <h1>Currency Converter</h1>
         <label for="baseCurrency">Base Currency:</label>
-        <input type="text" id="baseCurrency" name="base" placeholder="Enter Base Currency">
+        <select id="baseCurrencySelect">
+            <option value="USD">USD - United States Dollar</option>
+            <option value="EUR">EUR - Euro</option>
+            <option value="JPY">JPY - Japanese Yen</option>
+            <option value="GBP">GBP - British Pound Sterling</option>
+            <option value="AUD">AUD - Australian Dollar</option>
+            <option value="CAD">CAD - Canadian Dollar</option>
+            <option value="CHF">CHF - Swiss Franc</option>
+            <option value="CNY">CNY - Chinese Yuan</option>
+            <option value="INR">INR - Indian Rupee</option>
+            <option value="SGD">SGD - Singapore Dollar</option>
+            <!-- Add more currency options as needed -->
+        </select>
+
         <label for="foreignCurrency">Foreign Currency:</label>
-        <input type="text" id="foreignCurrency" name="foreign" placeholder="Enter Foreign Currency">
+        <select id="foreignCurrencySelect">
+            <option value="USD">USD - United States Dollar</option>
+            <option value="EUR">EUR - Euro</option>
+            <option value="JPY">JPY - Japanese Yen</option>
+            <option value="GBP">GBP - British Pound Sterling</option>
+            <option value="AUD">AUD - Australian Dollar</option>
+            <option value="CAD">CAD - Canadian Dollar</option>
+            <option value="CHF">CHF - Swiss Franc</option>
+            <option value="CNY">CNY - Chinese Yuan</option>
+            <option value="INR">INR - Indian Rupee</option>
+            <option value="SGD">SGD - Singapore Dollar</option>
+            <!-- Add more currency options as needed -->
+        </select>
+
         <input class="submit" type="submit" value="Convert" onclick="getCurrencyValues()">
     </div>
-    
-    <script>
-    function getCurrencyValues() {
-        // Get the values entered by the user
-        var baseCurrencyValue = document.getElementById("baseCurrency").value;
-        var foreignCurrencyValue = document.getElementById("foreignCurrency").value;
-    
-        // Do something with the values (e.g., display or process them)
-        console.log("Base Currency: " + baseCurrencyValue);
-        console.log("Foreign Currency: " + foreignCurrencyValue);
-    }
-    </script>
-    </div>
-    
+</form>
 
+    <script>
+        function getCurrencyValues() {
+            var baseCurrencyCode = document.getElementById("baseCurrencySelect").value;
+            var foreignCurrencyCode = document.getElementById("foreignCurrencySelect").value;
+
+            console.log("Base Currency: " + baseCurrencyCode);
+            console.log("Foreign Currency: " + foreignCurrencyCode);
+        }
+    </script>
 </body>
 </html>
