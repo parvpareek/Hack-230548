@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import requests
 
 def index(request):
@@ -7,10 +7,7 @@ def index(request):
 def limit(request):
     base_currency = request.GET.get('baseCurrency')
     foreign_currency = request.GET.get('foreignCurrency')
+    return redirect('another_function')
 
-    # Do something with the variables in your view logic
-
-    return render(request, 'Karanc/limit.html')
-    # if request.method=="POST":
 
 
