@@ -96,7 +96,8 @@
     </style>
 </head>
 <body>
-    <form onsubmit="getCurrencyValues(event)" action="{% url 'limit' %}">
+    <form onsubmit="getCurrencyValues(event)" action="{% url 'limit' %}" method="POST">
+        {% csrf_token %}
         <div class="container">
         <h1>Currency Converter</h1>
         <label for="baseCurrency">Base Currency:</label>
