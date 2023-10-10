@@ -94,23 +94,32 @@ button:hover {
         max-width: 400px;
     }
 }
-
     </style>
 
 </head>
 <body>
     <div class="container">
         <h1>Currency Converter</h1>
-        <div class="form">
-         <form action="{% url 'exchange_rate' %}" method="POST">
-            <label for="baseCurrency">Base Currency:</label>
-            <input type="text" id="baseCurrency" name="base" placeholder="Enter BaseCurrency">
-            <label for="foreignCurrency">Foreign Currency:</label>
-            <input type="text" id="foreignCurrency" name="foreign" placeholder="Enter Foreign Currency">
-            <input class="submit" type="submit" value="Convert">
-        </form>
-        </div>
+        <label for="baseCurrency">Base Currency:</label>
+        <input type="text" id="baseCurrency" name="base" placeholder="Enter Base Currency">
+        <label for="foreignCurrency">Foreign Currency:</label>
+        <input type="text" id="foreignCurrency" name="foreign" placeholder="Enter Foreign Currency">
+        <input class="submit" type="submit" value="Convert" onclick="getCurrencyValues()">
     </div>
+    
+    <script>
+    function getCurrencyValues() {
+        // Get the values entered by the user
+        var baseCurrencyValue = document.getElementById("baseCurrency").value;
+        var foreignCurrencyValue = document.getElementById("foreignCurrency").value;
+    
+        // Do something with the values (e.g., display or process them)
+        console.log("Base Currency: " + baseCurrencyValue);
+        console.log("Foreign Currency: " + foreignCurrencyValue);
+    }
+    </script>
+    </div>
+    
 
 </body>
 </html>
