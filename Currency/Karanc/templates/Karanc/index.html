@@ -1,9 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currency Converter</title>
     <style>
         /* Reset some default styles */
         * {
@@ -11,11 +9,11 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+    
         /* Apply styles to the body and background image */
         body {
             font-family: Arial, sans-serif;
-            background-image: url('https://img.freepik.com/premium-vector/global-currency-background_115579-405.jpg'); /* Replace with your image path */
+            background-image: url('https://img.freepik.com/premium-vector/global-currency-background_115579-405.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -24,7 +22,7 @@
             justify-content: center;
             align-items: center;
         }
-
+    
         /* Create a container for the form */
         .container {
             background-color: rgba(255, 255, 255, 0.8);
@@ -33,14 +31,14 @@
             text-align: center;
             box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
         }
-
+    
         /* Style the header */
         h1 {
             color: #007bff;
             font-size: 28px;
             margin-bottom: 20px;
         }
-
+    
         /* Style labels and input fields */
         label {
             display: block;
@@ -49,8 +47,10 @@
             font-weight: bold;
             font-size: 18px;
         }
-
-        select, input[type="text"] {
+    
+        input[type="number"],
+        select,
+        input[type="text"] {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
@@ -58,8 +58,8 @@
             border-radius: 5px;
             font-size: 16px;
         }
-
-        /* Style the convert button */
+    
+        /* Style the submit button */
         .submit {
             background-color: #007bff;
             color: #fff;
@@ -70,11 +70,11 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-
-        button:hover {
+    
+        .submit:hover {
             background-color: #0056b3;
         }
-
+    
         /* Style the result input (read-only) */
         #foreignCurrency {
             font-size: 18px;
@@ -85,7 +85,7 @@
             border-radius: 5px;
             padding: 10px;
         }
-
+    
         /* Responsiveness for smaller screens */
         @media screen and (max-width: 600px) {
             .container {
@@ -94,54 +94,68 @@
             }
         }
     </style>
+    
 </head>
 <body>
-    <form onsubmit="getCurrencyValues(event)" action="{% url 'limit' %}" method="POST">
-        {% csrf_token %}
-        <div class="container">
-        <h1>Currency Converter</h1>
-        <label for="baseCurrency">Base Currency:</label>
-        <select id="baseCurrencySelect">
-            <option value="USD">USD - United States Dollar</option>
-            <option value="EUR">EUR - Euro</option>
-            <option value="JPY">JPY - Japanese Yen</option>
-            <option value="GBP">GBP - British Pound Sterling</option>
-            <option value="AUD">AUD - Australian Dollar</option>
-            <option value="CAD">CAD - Canadian Dollar</option>
-            <option value="CHF">CHF - Swiss Franc</option>
-            <option value="CNY">CNY - Chinese Yuan</option>
-            <option value="INR">INR - Indian Rupee</option>
-            <option value="SGD">SGD - Singapore Dollar</option>
-            <!-- Add more currency options as needed -->
-        </select>
+    <div class="container">
+        <h1>Enter Maximum and Minimum Limits</h1>
+        <form id="combinedForm" onsubmit="getFormValues(event)">
+            <label for="minLimit">Minimum Limit:</label>
+            <input type="number" id="minLimit" name="minLimit" placeholder="Enter Minimum Limit" required>
 
-        <label for="foreignCurrency">Foreign Currency:</label>
-        <select id="foreignCurrencySelect">
-            <option value="USD">USD - United States Dollar</option>
-            <option value="EUR">EUR - Euro</option>
-            <option value="JPY">JPY - Japanese Yen</option>
-            <option value="GBP">GBP - British Pound Sterling</option>
-            <option value="AUD">AUD - Australian Dollar</option>
-            <option value="CAD">CAD - Canadian Dollar</option>
-            <option value="CHF">CHF - Swiss Franc</option>
-            <option value="CNY">CNY - Chinese Yuan</option>
-            <option value="INR">INR - Indian Rupee</option>
-            <option value="SGD">SGD - Singapore Dollar</option>
-            <!-- Add more currency options as needed -->
-        </select>
+            <label for="maxLimit">Maximum Limit:</label>
+            <input type="number" id="maxLimit" name="maxLimit" placeholder="Enter Maximum Limit" required>
 
-        <input class="submit" type="submit" value="Convert" onclick="getCurrencyValues()">
+            <h1>Currency Converter</h1>
+
+            <label for="baseCurrency">Base Currency:</label>
+            <select id="baseCurrencySelect" name="baseCurrencySelect">
+                <option value="USD">USD - United States Dollar</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="JPY">JPY - Japanese Yen</option>
+                <option value="GBP">GBP - British Pound Sterling</option>
+                <option value="AUD">AUD - Australian Dollar</option>
+                <option value="CAD">CAD - Canadian Dollar</option>
+                <option value="CHF">CHF - Swiss Franc</option>
+                <option value="CNY">CNY - Chinese Yuan</option>
+                <option value="INR">INR - Indian Rupee</option>
+                <option value="SGD">SGD - Singapore Dollar</option>
+                <!-- Add more currency options as needed -->
+            </select>
+
+            <label for="foreignCurrency">Foreign Currency:</label>
+            <select id="foreignCurrencySelect" name="foreignCurrencySelect">
+                <option value="USD">USD - United States Dollar</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="JPY">JPY - Japanese Yen</option>
+                <option value="GBP">GBP - British Pound Sterling</option>
+                <option value="AUD">AUD - Australian Dollar</option>
+                <option value="CAD">CAD - Canadian Dollar</option>
+                <option value="CHF">CHF - Swiss Franc</option>
+                <option value="CNY">CNY - Chinese Yuan</option>
+                <option value="INR">INR - Indian Rupee</option>
+                <option value="SGD">SGD - Singapore Dollar</option>
+                <!-- Add more currency options as needed -->
+            </select>
+
+            <input class="submit" type="submit" value="Submit">
+        </form>
     </div>
-</form>
 
     <script>
-        function getCurrencyValues() {
+        function getFormValues(event) {
+            event.preventDefault();
+            var minLimit = document.getElementById("minLimit").value;
+            var maxLimit = document.getElementById("maxLimit").value;
             var baseCurrencyCode = document.getElementById("baseCurrencySelect").value;
             var foreignCurrencyCode = document.getElementById("foreignCurrencySelect").value;
 
+            console.log("Minimum Limit: " + minLimit);
+            console.log("Maximum Limit: " + maxLimit);
             console.log("Base Currency: " + baseCurrencyCode);
             console.log("Foreign Currency: " + foreignCurrencyCode);
         }
     </script>
 </body>
 </html>
+
