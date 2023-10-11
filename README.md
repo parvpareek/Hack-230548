@@ -11,8 +11,7 @@ To run this project on your machine, follow these steps:
 
 Clone the repository to your local machine:
 bash
-Copy code
-git clone 
+
 
 
 Project Structure:
