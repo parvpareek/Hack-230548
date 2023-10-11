@@ -1,3 +1,5 @@
+Note" Changes made after the deadline are only made to the readme file
+
 Karanc Project Description:
 -----------------------
 
@@ -35,7 +37,7 @@ Exchange rate api
 
 Currency Exchange API
 ------------------------
-For currency exchange data, you'll need to generate an API URL from Currency Exchange API.
+For currency exchange data, you'll need to generate an API URL from Exchange Rate API.
 
 WhatsApp Notifications
 ---------------------
@@ -47,6 +49,12 @@ Instructions for Microagent Communication
 To see microagent communication in action:
 
 we need to add api keys of Call me Bot and Exchange rate api to .env file.
+
+.env file
+```
+WHATSAPP_API_KEY = {ENTER THE api key acquired in the whatsapp message}
+EXCHANGE_RATE_API_KEY = {Enter the exchange rate api key}
+
 Navigate to the "agent" folder.
 Inside this folder, open and run the "agent.py" and "user.py" files.
 ```python agent.py to run agent file run this in the terminal```
@@ -62,7 +70,4 @@ Enter the "Karanc" folder.
 Run the "agent.py" and "user.py".
 You will be redirected to a functioning web page, where you can explore the project's web-based features.
 
-Contact Information:
-----------------------
-If you have any questions or encounter issues during the setup process, you can reach out to the project owner at [ parvpareek@gmail.com].
 
