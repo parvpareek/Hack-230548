@@ -32,31 +32,29 @@ To run this project, you'll need to install the following libraries:
 uagents
 requests
 json
-Call Me Bot api
-Exchange rate api
 
 Currency Exchange API
 ------------------------
-For currency exchange data, you'll need to generate an API URL from Exchange Rate API.
+For currency exchange data, you'll need to generate an API URL from [Exchange Rate Api]('https://exchangeratesapi.io/').
 
 WhatsApp Notifications
 ---------------------
-To enable WhatsApp notifications, send the message "I allow callmebot to send me messages" to +34644718199.
+To enable WhatsApp notifications, send the message "I allow callmebot to send me messages" to [+34644718199]('https://wa.me/+34644718199').
 
 
 Instructions for Microagent Communication
 ------------------------------------------
 To see microagent communication in action:
 
-we need to add api keys of Call me Bot and Exchange rate api to .env file.
+You need to add api keys of Call me Bot and Exchange rate api to .env file.
 
 .env file
 ```
 WHATSAPP_API_KEY = {ENTER THE api key acquired in the whatsapp message}
 EXCHANGE_RATE_API_KEY = {Enter the exchange rate api key}
-
-Navigate to the "agent" folder.
-Inside this folder, open and run the "agent.py" and "user.py" files.
+```
+Navigate to the "agents" folder.
+Inside this folder, run the "agent.py" and "user.py" files.
 ```python agent.py to run agent file run this in the terminal```
 ```python user.py to give the base currency, foreign currency and minnimum and maximum limit run the file. The two files are needed to run in terminal separately```
 
@@ -67,7 +65,12 @@ Instructions for Web-Based Implementation:
 To experience the web-based functionality, do the following:
 
 Enter the "Karanc" folder.
-Run the "agent.py" and "user.py".
+Run the below command
+```
+python manage.py runserver
+```
+
+Go  to [web app]('127.0.0.1/8000/Karanc')
 You will be redirected to a functioning web page, where you can explore the project's web-based features.
 
 
