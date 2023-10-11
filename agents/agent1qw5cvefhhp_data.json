@@ -1,0 +1,9 @@
+{
+    "base": "USD",
+    "foreign": "INR",
+    "number": "919737012383",
+    "min": 100.0,
+    "max": 100.0,
+    "check": 1,
+    "completed": true
+}
