@@ -10,13 +10,11 @@ Getting Started:
 To run this project on your machine, follow these steps:
 
 Clone the repository to your local machine:
-bash
-
 
 
 Project Structure:
 ------------------
-This repository includes two main folders inside the "Agent_communication" directory:
+This repository includes two main folders:
 
 Console-based Microagent Communication (Microagents):
 
@@ -37,7 +35,7 @@ Exchange rate api
 
 Currency Exchange API
 ------------------------
-For weather data, you'll need to generate an API URL from Currency Exchange API.
+For currency exchange data, you'll need to generate an API URL from Currency Exchange API.
 
 WhatsApp Notifications
 ---------------------
@@ -48,6 +46,7 @@ Instructions for Microagent Communication
 ------------------------------------------
 To see microagent communication in action:
 
+we need to add api keys of Call me Bot and Exchange rate api to .env file.
 Navigate to the "agent" folder.
 Inside this folder, open and run the "agent.py" and "user.py" files.
 ```python agent.py to run agent file run this in the terminal```
