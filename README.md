@@ -73,5 +73,6 @@ python manage.py runserver
 Go  to [web app]('127.0.0.1/8000/Karanc')
 You will be redirected to a functioning web page, where you can explore the project's web-based features.
 
-Go to [Youtube Videos]('https://youtu.be/vRRdwliWz-s?si=k5YvZV7KxoBQP5Am') hand on projects.
+Go to [YouTube Videos](https://youtu.be/vRRdwliWz-s?si=k5YvZV7KxoBQP5Am)
+ hand on projects.
 
